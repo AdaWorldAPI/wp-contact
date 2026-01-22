@@ -230,27 +230,27 @@ class WP_Contact_Form {
     
     private function get_email_template($data) {
         $site_name = get_bloginfo('name');
-        $timestamp = current_time('F j, Y \a\t g:i a');
+        $timestamp = current_time('j. F Y \u\m H:i \U\h\r');
         
         $name = esc_html($data['name']);
         $email = esc_html($data['email']);
-        $subject = esc_html($data['subject'] ?? 'No subject');
+        $subject = esc_html($data['subject'] ?? 'Kein Betreff');
         $message = nl2br(esc_html($data['message']));
         
         return <<<HTML
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Message</title>
+    <title>Neue Nachricht</title>
     <!--[if mso]>
     <style type="text/css">
-        body, table, td {font-family: Georgia, serif !important;}
+        body, table, td {font-family: Arial, sans-serif !important;}
     </style>
     <![endif]-->
 </head>
-<body style="margin: 0; padding: 0; background-color: #f7f5f2; font-family: Georgia, 'Times New Roman', serif;">
+<body style="margin: 0; padding: 0; background-color: #f7f5f2; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
     
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f7f5f2;">
         <tr>
@@ -262,11 +262,11 @@ class WP_Contact_Form {
                     <!-- Header -->
                     <tr>
                         <td style="padding: 48px 48px 32px 48px; border-bottom: 1px solid #e8e4dc;">
-                            <p style="margin: 0; font-size: 11px; letter-spacing: 3px; color: #9a958c; text-transform: uppercase; font-family: 'Courier New', monospace;">
+                            <p style="margin: 0; font-size: 11px; letter-spacing: 3px; color: #9a958c; text-transform: uppercase; font-weight: 500;">
                                 {$site_name}
                             </p>
-                            <h1 style="margin: 16px 0 0 0; font-size: 28px; font-weight: 400; color: #3d3a35; letter-spacing: -0.5px; font-family: Georgia, serif;">
-                                Someone reached out.
+                            <h1 style="margin: 16px 0 0 0; font-size: 28px; font-weight: 300; color: #3d3a35; letter-spacing: -0.5px;">
+                                Neue Nachricht erhalten.
                             </h1>
                         </td>
                     </tr>
@@ -276,26 +276,26 @@ class WP_Contact_Form {
                         <td style="padding: 32px 48px 24px 48px; background-color: #fcfaf7;">
                             <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                                 <tr>
-                                    <td width="80" style="padding-bottom: 12px; font-size: 12px; color: #9a958c; text-transform: uppercase; letter-spacing: 1px; font-family: 'Courier New', monospace; vertical-align: top;">
-                                        From
+                                    <td width="80" style="padding-bottom: 12px; font-size: 11px; color: #9a958c; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; vertical-align: top;">
+                                        Von
                                     </td>
-                                    <td style="padding-bottom: 12px; font-size: 16px; color: #3d3a35; font-family: Georgia, serif;">
+                                    <td style="padding-bottom: 12px; font-size: 16px; color: #3d3a35;">
                                         {$name}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-bottom: 12px; font-size: 12px; color: #9a958c; text-transform: uppercase; letter-spacing: 1px; font-family: 'Courier New', monospace; vertical-align: top;">
-                                        Email
+                                    <td style="padding-bottom: 12px; font-size: 11px; color: #9a958c; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; vertical-align: top;">
+                                        E-Mail
                                     </td>
-                                    <td style="padding-bottom: 12px; font-size: 16px; color: #3d3a35; font-family: Georgia, serif;">
+                                    <td style="padding-bottom: 12px; font-size: 16px; color: #3d3a35;">
                                         <a href="mailto:{$email}" style="color: #6b685f; text-decoration: none; border-bottom: 1px solid #c9c4b9;">{$email}</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="font-size: 12px; color: #9a958c; text-transform: uppercase; letter-spacing: 1px; font-family: 'Courier New', monospace; vertical-align: top;">
-                                        Re
+                                    <td style="font-size: 11px; color: #9a958c; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; vertical-align: top;">
+                                        Betreff
                                     </td>
-                                    <td style="font-size: 16px; color: #3d3a35; font-family: Georgia, serif;">
+                                    <td style="font-size: 16px; color: #3d3a35;">
                                         {$subject}
                                     </td>
                                 </tr>
@@ -317,10 +317,10 @@ class WP_Contact_Form {
                     <!-- Message Body -->
                     <tr>
                         <td style="padding: 32px 48px 48px 48px;">
-                            <p style="margin: 0 0 24px 0; font-size: 13px; color: #9a958c; text-transform: uppercase; letter-spacing: 2px; font-family: 'Courier New', monospace;">
-                                Their words
+                            <p style="margin: 0 0 24px 0; font-size: 11px; color: #9a958c; text-transform: uppercase; letter-spacing: 2px; font-weight: 500;">
+                                Nachricht
                             </p>
-                            <div style="font-size: 17px; line-height: 1.7; color: #4a4741; font-family: Georgia, serif;">
+                            <div style="font-size: 16px; line-height: 1.7; color: #4a4741;">
                                 {$message}
                             </div>
                         </td>
@@ -332,15 +332,15 @@ class WP_Contact_Form {
                             <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                                 <tr>
                                     <td>
-                                        <p style="margin: 0 0 8px 0; font-size: 12px; color: #a09b92; font-family: 'Courier New', monospace; letter-spacing: 1px;">
+                                        <p style="margin: 0 0 8px 0; font-size: 12px; color: #a09b92; letter-spacing: 1px;">
                                             {$timestamp}
                                         </p>
-                                        <p style="margin: 0; font-size: 13px; color: #7a756c; font-family: Georgia, serif; font-style: italic;">
-                                            Delivered with quiet grace.
+                                        <p style="margin: 0; font-size: 13px; color: #7a756c; font-style: italic;">
+                                            Mit stiller Sorgfalt zugestellt.
                                         </p>
                                     </td>
                                     <td align="right" style="vertical-align: bottom;">
-                                        <p style="margin: 0; font-size: 10px; color: #5c584f; font-family: 'Courier New', monospace; letter-spacing: 2px;">
+                                        <p style="margin: 0; font-size: 10px; color: #5c584f; letter-spacing: 2px;">
                                             ◆
                                         </p>
                                     </td>
@@ -355,9 +355,9 @@ class WP_Contact_Form {
                 <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px;">
                     <tr>
                         <td style="padding: 24px 48px; text-align: center;">
-                            <p style="margin: 0; font-size: 11px; color: #b0aa9f; font-family: Georgia, serif;">
-                                This message arrived via the contact form at {$site_name}.<br>
-                                Reply directly to correspond with {$name}.
+                            <p style="margin: 0; font-size: 11px; color: #b0aa9f;">
+                                Diese Nachricht wurde über das Kontaktformular auf {$site_name} gesendet.<br>
+                                Antworten Sie direkt, um mit {$name} zu korrespondieren.
                             </p>
                         </td>
                     </tr>
@@ -562,12 +562,12 @@ HTML;
                     <div class="wpc-field">
                         <label for="form_title">Form Title</label>
                         <input type="text" id="form_title" name="wp_contact_options[form_title]" 
-                               value="<?php echo esc_attr($options['form_title'] ?? 'Get in touch'); ?>">
+                               value="<?php echo esc_attr($options['form_title'] ?? 'Kontakt'); ?>">
                     </div>
                     
                     <div class="wpc-field">
                         <label for="success_message">Success Message</label>
-                        <textarea id="success_message" name="wp_contact_options[success_message]" rows="2"><?php echo esc_textarea($options['success_message'] ?? 'Thank you. Your message has been sent.'); ?></textarea>
+                        <textarea id="success_message" name="wp_contact_options[success_message]" rows="2"><?php echo esc_textarea($options['success_message'] ?? 'Vielen Dank. Ihre Nachricht wurde gesendet.'); ?></textarea>
                     </div>
                     
                     <div class="wpc-field">
@@ -596,7 +596,7 @@ HTML;
     
     public function render_contact_form($atts) {
         $options = get_option('wp_contact_options', []);
-        $title = $options['form_title'] ?? 'Get in touch';
+        $title = $options['form_title'] ?? 'Kontakt';
         $nonce = wp_create_nonce('wp_contact_nonce');
         
         ob_start();
@@ -609,7 +609,7 @@ HTML;
                     --wpc-text: #3d3a35;
                     --wpc-muted: #9a958c;
                     --wpc-accent: #5c584f;
-                    font-family: Georgia, 'Times New Roman', serif;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                     max-width: 560px;
                     margin: 0 auto;
                 }
@@ -627,11 +627,11 @@ HTML;
                     color: var(--wpc-muted);
                     text-transform: uppercase;
                     margin: 0 0 8px 0;
-                    font-family: 'Courier New', monospace;
+                    font-weight: 500;
                 }
                 .wp-contact-form__heading {
                     font-size: 28px;
-                    font-weight: 400;
+                    font-weight: 300;
                     color: var(--wpc-text);
                     margin: 0 0 32px 0;
                     letter-spacing: -0.5px;
@@ -641,19 +641,19 @@ HTML;
                 }
                 .wp-contact-form__label {
                     display: block;
-                    font-size: 12px;
+                    font-size: 11px;
                     letter-spacing: 2px;
                     color: var(--wpc-muted);
                     text-transform: uppercase;
                     margin-bottom: 8px;
-                    font-family: 'Courier New', monospace;
+                    font-weight: 500;
                 }
                 .wp-contact-form__input,
                 .wp-contact-form__textarea {
                     width: 100%;
                     padding: 14px 16px;
                     font-size: 16px;
-                    font-family: Georgia, serif;
+                    font-family: inherit;
                     color: var(--wpc-text);
                     background: #fff;
                     border: 1px solid var(--wpc-border);
@@ -672,10 +672,11 @@ HTML;
                 .wp-contact-form__submit {
                     display: inline-block;
                     padding: 14px 32px;
-                    font-size: 12px;
+                    font-size: 11px;
                     letter-spacing: 2px;
                     text-transform: uppercase;
-                    font-family: 'Courier New', monospace;
+                    font-family: inherit;
+                    font-weight: 500;
                     color: #fff;
                     background: var(--wpc-text);
                     border: none;
@@ -732,30 +733,30 @@ HTML;
                     <input type="hidden" name="wp_contact_nonce" value="<?php echo esc_attr($nonce); ?>">
                     
                     <div class="wp-contact-form__field">
-                        <label class="wp-contact-form__label" for="wpc-name">Your name</label>
+                        <label class="wp-contact-form__label" for="wpc-name">Ihr Name</label>
                         <input type="text" id="wpc-name" name="name" class="wp-contact-form__input" required>
                     </div>
                     
                     <div class="wp-contact-form__field">
-                        <label class="wp-contact-form__label" for="wpc-email">Email address</label>
+                        <label class="wp-contact-form__label" for="wpc-email">E-Mail-Adresse</label>
                         <input type="email" id="wpc-email" name="email" class="wp-contact-form__input" required>
                     </div>
                     
                     <div class="wp-contact-form__field">
-                        <label class="wp-contact-form__label" for="wpc-subject">Subject</label>
+                        <label class="wp-contact-form__label" for="wpc-subject">Betreff</label>
                         <input type="text" id="wpc-subject" name="subject" class="wp-contact-form__input">
                     </div>
                     
                     <div class="wp-contact-form__field">
-                        <label class="wp-contact-form__label" for="wpc-message">Your message</label>
+                        <label class="wp-contact-form__label" for="wpc-message">Ihre Nachricht</label>
                         <textarea id="wpc-message" name="message" class="wp-contact-form__textarea" required></textarea>
                     </div>
                     
-                    <button type="submit" class="wp-contact-form__submit">Send message</button>
+                    <button type="submit" class="wp-contact-form__submit">Nachricht senden</button>
                 </form>
                 
                 <p class="wp-contact-form__footer">
-                    Every message finds its way.
+                    Jede Nachricht findet ihren Weg.
                 </p>
             </div>
         </div>
@@ -770,7 +771,7 @@ HTML;
                 e.preventDefault();
                 
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
+                submitBtn.textContent = 'Wird gesendet...';
                 messageEl.style.display = 'none';
                 
                 const formData = new FormData(form);
@@ -794,12 +795,12 @@ HTML;
                     }
                 } catch (error) {
                     messageEl.className = 'wp-contact-form__message wp-contact-form__message--error';
-                    messageEl.textContent = 'Something went wrong. Please try again.';
+                    messageEl.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
                     messageEl.style.display = 'block';
                 }
                 
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Send message';
+                submitBtn.textContent = 'Nachricht senden';
             });
         })();
         </script>
@@ -814,7 +815,7 @@ HTML;
     public function handle_form_submission() {
         // Verify nonce
         if (!wp_verify_nonce($_POST['wp_contact_nonce'] ?? '', 'wp_contact_nonce')) {
-            wp_send_json_error(['message' => 'Security check failed.']);
+            wp_send_json_error(['message' => 'Sicherheitsprüfung fehlgeschlagen.']);
         }
         
         // Rate limiting (simple implementation)
@@ -823,7 +824,7 @@ HTML;
         $attempts = get_transient($transient_key) ?: 0;
         
         if ($attempts >= 5) {
-            wp_send_json_error(['message' => 'Please wait a moment before sending another message.']);
+            wp_send_json_error(['message' => 'Bitte warten Sie einen Moment, bevor Sie eine weitere Nachricht senden.']);
         }
         
         set_transient($transient_key, $attempts + 1, 300); // 5 minute window
@@ -831,20 +832,20 @@ HTML;
         // Validate fields
         $name = sanitize_text_field($_POST['name'] ?? '');
         $email = sanitize_email($_POST['email'] ?? '');
-        $subject = sanitize_text_field($_POST['subject'] ?? 'Contact Form Message');
+        $subject = sanitize_text_field($_POST['subject'] ?? 'Kontaktformular-Nachricht');
         $message = sanitize_textarea_field($_POST['message'] ?? '');
         
         if (empty($name) || empty($email) || empty($message)) {
-            wp_send_json_error(['message' => 'Please fill in all required fields.']);
+            wp_send_json_error(['message' => 'Bitte füllen Sie alle Pflichtfelder aus.']);
         }
         
         if (!is_email($email)) {
-            wp_send_json_error(['message' => 'Please enter a valid email address.']);
+            wp_send_json_error(['message' => 'Bitte geben Sie eine gültige E-Mail-Adresse ein.']);
         }
         
         // Honeypot check (if field exists and is filled, it's a bot)
         if (!empty($_POST['website'])) {
-            wp_send_json_error(['message' => 'Submission blocked.']);
+            wp_send_json_error(['message' => 'Übermittlung blockiert.']);
         }
         
         // Prepare email
@@ -874,12 +875,12 @@ HTML;
             $fallback = wp_mail($admin_email, $email_subject, $html_body, $headers);
             
             if (!$fallback) {
-                wp_send_json_error(['message' => 'Unable to send message. Please try again later.']);
+                wp_send_json_error(['message' => 'Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.']);
             }
         }
         
         $options = get_option('wp_contact_options', []);
-        $success_message = $options['success_message'] ?? 'Thank you. Your message has been sent.';
+        $success_message = $options['success_message'] ?? 'Vielen Dank. Ihre Nachricht wurde gesendet.';
         
         wp_send_json_success(['message' => $success_message]);
     }
