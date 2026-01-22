@@ -71,7 +71,7 @@ config/credentials.enc  640 (-rw-r-----)
 Add the shortcode to any page:
 
 ```
-[wp_contact]
+[WP_Contact]
 ```
 
 ## Security Notes
