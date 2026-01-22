@@ -47,7 +47,7 @@ class WP_Contact_Form {
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
         add_action('wp_ajax_wp_contact_submit', [$this, 'handle_form_submission']);
         add_action('wp_ajax_nopriv_wp_contact_submit', [$this, 'handle_form_submission']);
-        add_shortcode('wp_contact', [$this, 'render_contact_form']);
+        add_shortcode('WP_Contact', [$this, 'render_contact_form']);
         
         register_activation_hook(__FILE__, [$this, 'activate']);
         register_deactivation_hook(__FILE__, [$this, 'deactivate']);
@@ -581,7 +581,7 @@ HTML;
                 <div class="wpc-card">
                     <h2>📋 Usage</h2>
                     <p>Add this shortcode to any page or post:</p>
-                    <div class="wpc-shortcode">[wp_contact]</div>
+                    <div class="wpc-shortcode">[WP_Contact]</div>
                 </div>
                 
                 <?php submit_button('Save Settings'); ?>
